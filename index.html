@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/index.css">
+    <script src="https://kit.fontawesome.com/94a0a8027e.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans&family=Lato&display=swap" rel="stylesheet">
+    <title>Les petits plats</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <p>Les petits plats</p>
+        </nav>
+    </header>
+    <main>
+        <div class="search">
+            <input 
+            text="search"
+            placeholder="Rechercher votre recette"
+            class="main_search">   
+            <i class="fa-solid fa-magnifying-glass"></i>      
+        </div>
+        <div class="input_search">
+            <div class="recipes_container">
+                <input  type="text"
+                    class="ingredients"
+                    placeholder="Ingredients">
+                <i class="fa-sharp fa-solid fa-chevron-down"></i>
+                <div class="ingr_container">
+                    <ul class="ingr_list"></ul>
+                </div>
+            </div>
+            <div class="recipes_container">
+                <input  type="text"
+                    class="appareils"
+                    placeholder="Appareils">
+                <i class="fa-sharp fa-solid fa-chevron-down app"></i>
+                <div class="app_container">
+                    <ul class="app_list"></ul>
+                </div>
+            </div>
+            <div class="recipes_container">
+                <input  type="text"
+                    class="ustensiles"
+                    placeholder="Ustensiles">
+                <i class="fa-sharp fa-solid fa-chevron-down ustensils"></i>
+                <div class="ust_container">
+                    <ul class="ust_list"></ul>
+                </div>
+            </div>
+        </div>
+        <section class="article_container"></section>
+    </main>
+    <script type="module" src="index.js"></script>
+    <script type="module" src="recipes.js"></script>
+    <script type="module" src="/Factory/recipeFactory.js"></script>
+</body>
+</html>
