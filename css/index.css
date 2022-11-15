@@ -86,6 +86,71 @@ nav p {
     background-color: #ED6454;
 }
 
+.tag_container {
+    margin: 15px 0;
+}
+
+.tag_ingredient {
+    display: flex;
+    align-items: center;
+    background-color: #3282F7;
+    padding: 10px 18px;
+    font-size: 14px;
+    font-weight: 700;
+    font-family: 'Lato';
+    color: #E7E7E7;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.tag_ingredient .icon {
+    color: #E5E5E5;
+    font-size: 20px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.tag_app {
+    display: flex;
+    align-items: center;
+    background-color: #68D9A4;
+    padding: 10px 18px;
+    font-size: 14px;
+    font-weight: 700;
+    font-family: 'Lato';
+    color: #E7E7E7;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.tag_app .icon {
+    color: #E5E5E5;
+    font-size: 20px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.tag_ust {
+    display: flex;
+    align-items: center;
+    background-color: #ED6454;
+    padding: 10px 18px;
+    font-size: 14px;
+    font-weight: 700;
+    font-family: 'Lato';
+    color: #E7E7E7;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.tag_ust .icon {
+    color: #E5E5E5;
+    font-size: 20px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+
 .recipes_container {
     margin: 0 20px 50px 0 ;
 }
@@ -108,30 +173,30 @@ nav p {
 }
 
 .ingr_container {
-    display: flex;
-    flex-direction: column;
+    display: none;
     background: #3282F7;
     border-radius: 5px;
 }
 
 .ingr_container ul {
-    display: none;
+    column-count: 3;
     list-style-type: none;
     color: #FFFFFF;
 }
 
 .ingr_container li {
+    cursor: pointer;
     font-size: 18px;
     font-family: 'Lato';
 }
 
 .app_container{
+    display: none;
     background: #68D9A4;
     border-radius: 5px;
 }
 
 .app_container ul {
-    display: none;
     list-style-type: none;
     color: #FFFFFF;
 }
@@ -139,14 +204,15 @@ nav p {
 .app_container li {
     font-size: 18px;
     font-family: 'Lato';
+    cursor: pointer;
 }
 
 .ust_container {
+    display: none;
     background-color: #ED6454;
 }
 
 .ust_container ul {
-    display: none;
     list-style-type: none;
     color: #FFFFFF;
 }
@@ -154,13 +220,12 @@ nav p {
 .ust_container li {
     font-size: 18px;
     font-family: 'Lato';
+    cursor: pointer;
 }
-
 
 section {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
 }
 
 section article {
@@ -168,7 +233,9 @@ section article {
     width: 380px;
     border-radius: 5px;
     background-color: #E7E7E7;
-    margin: 10px 0;
+    margin-right: 46px;
+    margin-bottom: 20px;
+
 }
 
 article .back {
@@ -217,6 +284,9 @@ article .recette{
 
 
 .erreur_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: 380px;
     width: 364px;
     background-color: #E7E7E7;
