@@ -16,17 +16,7 @@ const searchAlgo = (e) => {
   let filterEntries = [];
   const userValue = e.target.value.toLowerCase();
   if (userValue.length >= 3) {
-    filterEntries = currentRecipes.filter(
-      (el) =>
-        el.name.toLowerCase().includes(userValue) ||
-        el.description.toLowerCase().includes(userValue) ||
-        el.ingredients.some((ingredient) =>
-          ingredient.ingredient.toLowerCase().includes(userValue)
-        )
-    );
-    currentRecipes = [...filterEntries];
-    console.log(currentRecipes);
-    /* for (let obj of currentRecipes) {
+    for (let obj of currentRecipes) {
       let ingredientFind = false;
       for (let objIngr of obj.ingredients) {
         if (objIngr.ingredient.toLowerCase().includes(userValue)) {
@@ -41,11 +31,11 @@ const searchAlgo = (e) => {
         filterEntries.push(obj);
         const newArray = [...new Set(filterEntries)];
         currentRecipes = [...newArray];
-        console.log(currentRecipes);
       }
-    } */
+    }
     filterArray();
     displayReceipes();
+
   } else if (userValue.length < 3) {
     currentRecipes = recipes;
     displayReceipes();
@@ -57,6 +47,7 @@ const searchAlgo = (e) => {
       `;
   }
 };
+
 const rechecheBarre = () => {
   const search = document.querySelector(".main_search");
   search.addEventListener("keyup", searchAlgo);
@@ -64,12 +55,13 @@ const rechecheBarre = () => {
 
 const createTag = (ingredient) => {
   const tagContainer = document.querySelector(".tag_container");
-  tagContainer.innerHTML += `
-            <div class="tag_ingredient">
-            <span class="tag_value_ingredient">${ingredient}</span>
-            <i class="fa-regular fa-circle-xmark icon"></i>
-            </div>
-            `;
+  const createDiv = document.createElement("div")
+  createDiv.setAttribute("class","tag_ingredient")
+  const createSpan = document.createElement("span")
+  createSpan.setAttribute("class", "tag_value_ingredient")
+  tagContainer.appendChild(createDiv)
+  createDiv.appendChild(createSpan)
+  createSpan.innerHTML += ingredient
   const tagActiveIngr = document.querySelectorAll(`.tag_ingredient`);
   tagActiveIngr.forEach((tagAct) => {
     tagAct.addEventListener("click", function () {
@@ -84,9 +76,8 @@ const createTag = (ingredient) => {
             ingredient.ingredient.toLowerCase().includes(userValue)
           )
       );
-      console.log(filterEntries);
       currentRecipes = [...filterEntries];
-      console.log(currentRecipes);
+      
       const tagArrayIngredient = document.querySelectorAll(
         ".tag_value_ingredient"
       );
@@ -95,7 +86,6 @@ const createTag = (ingredient) => {
       );
       const tagArrayAppareil = document.querySelectorAll(".tag_value_appareil");
       tagArrayIngredient.forEach((tagArr) => {
-        console.log(tagArr.innerHTML.toLowerCase());
         currentRecipes = currentRecipes.filter((elTag) =>
           elTag.ingredients.some((ingredient) =>
             ingredient.ingredient
@@ -103,26 +93,19 @@ const createTag = (ingredient) => {
               .includes(tagArr.innerHTML.toLowerCase())
           )
         );
-        console.log(currentRecipes);
       });
       tagArrayUstensils.forEach((tagArr) => {
-        console.log(tagArr.innerHTML.toLowerCase());
         currentRecipes = currentRecipes.filter((elTag) =>
           elTag.ustensils.some((ust) =>
             ust.toLowerCase().includes(tagArr.innerHTML.toLowerCase())
           )
         );
-        console.log(currentRecipes);
       });
       tagArrayAppareil.forEach((tagArr) => {
-        console.log(tagArr.innerHTML.toLowerCase());
         currentRecipes = currentRecipes.filter((elTag) =>
           elTag.appliance.toLowerCase().includes(tagArr.innerHTML.toLowerCase())
         );
-        console.log(currentRecipes);
       });
-      /* Retrouver la liste des tags */
-      /* Filtrer currentRecipes par rapport a la liste des tags */
       displayReceipes();
       filterArray();
     });
@@ -131,16 +114,17 @@ const createTag = (ingredient) => {
 
 const createAppTag = (appliance) => {
   const tagContainer = document.querySelector(".tag_container");
-  tagContainer.innerHTML += `
-    <div class="tag_app">
-        <span class="tag_value_appareil">${appliance}</span>
-        <i class="fa-regular fa-circle-xmark icon"></i>
-    </div>
-    `;
+  const createDiv = document.createElement("div")
+  createDiv.setAttribute("class","tag_app")
+  const createSpan = document.createElement("span")
+  createSpan.setAttribute("class", "tag_value_appareil")
+  tagContainer.appendChild(createDiv)
+  createDiv.appendChild(createSpan)
+  createSpan.innerHTML += appliance
   const tagActiveApp = document.querySelectorAll(`.tag_app`);
-  tagActiveApp.forEach((test) => {
-    test.addEventListener("click", function () {
-      test.remove();
+  tagActiveApp.forEach((tagAct) => {
+    tagAct.addEventListener("click", function () {
+      tagAct.remove();
       let filterEntries = [];
       const userValue = document.querySelector(".main_search").value;
       filterEntries = recipes.filter(
@@ -158,7 +142,6 @@ const createAppTag = (appliance) => {
       );
       const tagArrayAppareil = document.querySelectorAll(".tag_value_appareil");
       tagArrayIngredient.forEach((tagArr) => {
-        console.log(tagArr.innerHTML.toLowerCase());
         currentRecipes = currentRecipes.filter(
           (elTag) =>
             elTag.ingredients.some((ingredient) =>
@@ -173,10 +156,8 @@ const createAppTag = (appliance) => {
               .toLowerCase()
               .includes(tagArr.innerHTML.toLowerCase())
         );
-        console.log(currentRecipes);
       });
       tagArrayUstensils.forEach((tagArr) => {
-        console.log(tagArr.innerHTML.toLowerCase());
         currentRecipes = currentRecipes.filter(
           (elTag) =>
             elTag.ingredients.some((ingredient) =>
@@ -191,10 +172,8 @@ const createAppTag = (appliance) => {
               .toLowerCase()
               .includes(tagArr.innerHTML.toLowerCase())
         );
-        console.log(currentRecipes);
       });
       tagArrayAppareil.forEach((tagArr) => {
-        console.log(tagArr.innerHTML.toLowerCase());
         currentRecipes = currentRecipes.filter(
           (elTag) =>
             elTag.ingredients.some((ingredient) =>
@@ -209,7 +188,6 @@ const createAppTag = (appliance) => {
               .toLowerCase()
               .includes(tagArr.innerHTML.toLowerCase())
         );
-        console.log(currentRecipes);
       });
       displayReceipes();
       filterArray();
@@ -219,16 +197,16 @@ const createAppTag = (appliance) => {
 
 const createUstTag = (ustensils_item) => {
   const tagContainer = document.querySelector(".tag_container");
-  tagContainer.innerHTML += `
-    <div class="tag_ust">
-    <span class="tag_value_ustensils">${ustensils_item}</span>
-    <i class="fa-regular fa-circle-xmark icon"></i>
-    </div>
-    `;
+  const createDiv = document.createElement("div")
+  createDiv.setAttribute("class","tag_ust")
+  const createSpan = document.createElement("span")
+  createSpan.setAttribute("class", "tag_value_ustensils")
+  tagContainer.appendChild(createDiv)
+  createDiv.appendChild(createSpan)
+  createSpan.innerHTML += ustensils_item
   const tagActiveUst = document.querySelectorAll(`.tag_ust`);
   tagActiveUst.forEach((tagAct) => {
     tagAct.addEventListener("click", function () {
-      console.log(tagAct);
       tagAct.remove();
       let filterEntries = [];
       const userValue = document.querySelector(".main_search").value;
@@ -239,7 +217,6 @@ const createUstTag = (ustensils_item) => {
           element.ustensils.some((ustensil) => ustensil.includes(userValue))
       );
       currentRecipes = [...filterEntries];
-      console.log(currentRecipes);
       const tagArrayIngredient = document.querySelectorAll(
         ".tag_value_ingredient"
       );
@@ -248,7 +225,6 @@ const createUstTag = (ustensils_item) => {
       );
       const tagArrayAppareil = document.querySelectorAll(".tag_value_appareil");
       tagArrayIngredient.forEach((tagArr) => {
-        console.log(tagArr.innerHTML.toLowerCase());
         currentRecipes = currentRecipes.filter((elTag) =>
           elTag.ingredients.some((ingredient) =>
             ingredient.ingredient
@@ -256,23 +232,18 @@ const createUstTag = (ustensils_item) => {
               .includes(tagArr.innerHTML.toLowerCase())
           )
         );
-        console.log(currentRecipes);
       });
       tagArrayUstensils.forEach((tagArr) => {
-        console.log(tagArr.innerHTML.toLowerCase());
         currentRecipes = currentRecipes.filter((elTag) =>
           elTag.ustensils.some((ust) =>
             ust.toLowerCase().includes(tagArr.innerHTML.toLowerCase())
           )
         );
-        console.log(currentRecipes);
       });
       tagArrayAppareil.forEach((tagArr) => {
-        console.log(tagArr.innerHTML.toLowerCase());
         currentRecipes = currentRecipes.filter((elTag) =>
           elTag.appliance.toLowerCase().includes(tagArr.innerHTML.toLowerCase())
         );
-        console.log(currentRecipes);
       });
       displayReceipes();
       filterArray();
@@ -292,7 +263,6 @@ function inputIngredient(ingredientList) {
   const li = document.querySelectorAll(".ingredient_item");
   li.forEach((ingredient) => {
     ingredient.addEventListener("click", function () {
-      console.log(ingredient.innerHTML);
       createTag(ingredient.innerHTML);
       currentRecipes = currentRecipes.filter((el) =>
         el.ingredients.some((ingre) =>
@@ -301,15 +271,15 @@ function inputIngredient(ingredientList) {
             .includes(ingredient.innerHTML.toLowerCase())
         )
       );
-      console.log(currentRecipes);
       displayReceipes();
       filterArray();
     });
   });
+
   ingredientSearch.addEventListener("keyup", function (e) {
-    const test = document.querySelectorAll(".ingredient_item");
+    const ingredientValue = document.querySelectorAll(".ingredient_item");
     const valueTarget = e.target.value.toLowerCase();
-    test.forEach((ingredient) => {
+    ingredientValue.forEach((ingredient) => {
       if (ingredient.innerHTML.toLowerCase().includes(valueTarget)) {
         ingredient.style.display = "block";
       } else {
@@ -338,12 +308,10 @@ function inputAppareils(applianceSort) {
   const li = document.querySelectorAll(".appliance_item");
   li.forEach((appliance) => {
     appliance.addEventListener("click", function () {
-      console.log(appliance.innerHTML.toLowerCase());
       createAppTag(appliance.innerHTML);
       currentRecipes = currentRecipes.filter((el) =>
         el.appliance.toLowerCase().includes(appliance.innerHTML.toLowerCase())
       );
-      console.log(currentRecipes);
       displayReceipes();
       filterArray();
     });
@@ -380,18 +348,17 @@ function inputUstensil(ustensilSort) {
   const li = document.querySelectorAll(".ustensiles_item");
   li.forEach((ustensils_item) => {
     ustensils_item.addEventListener("click", function () {
-      console.log(ustensils_item.innerHTML.toLowerCase());
       createUstTag(ustensils_item.innerHTML);
       currentRecipes = currentRecipes.filter((ust) =>
         ust.ustensils.some((ust_tag) =>
           ust_tag.toLowerCase().includes(ustensils_item.innerHTML.toLowerCase())
         )
       );
-      console.log(currentRecipes);
       displayReceipes();
       filterArray();
     });
   });
+
   input.addEventListener("input", function (e) {
     const ustContainer = document.querySelectorAll(".ustensiles_item");
     const valueTarget = e.target.value;
