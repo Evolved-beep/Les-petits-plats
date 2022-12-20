@@ -25,25 +25,6 @@ const searchAlgo = (e) => {
         )
     );
     currentRecipes = [...filterEntries];
-    console.log(currentRecipes);
-    /* for (let obj of currentRecipes) {
-      let ingredientFind = false;
-      for (let objIngr of obj.ingredients) {
-        if (objIngr.ingredient.toLowerCase().includes(userValue)) {
-          ingredientFind = true;
-        }
-      }
-      if (
-        obj.name.toLowerCase().includes(userValue) ||
-        obj.description.toLowerCase().includes(userValue) ||
-        ingredientFind
-      ) {
-        filterEntries.push(obj);
-        const newArray = [...new Set(filterEntries)];
-        currentRecipes = [...newArray];
-        console.log(currentRecipes);
-      }
-    } */
     filterArray();
     displayReceipes();
   } else if (userValue.length < 3) {
