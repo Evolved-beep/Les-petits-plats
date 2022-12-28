@@ -14,7 +14,7 @@ const displayReceipes = () => {
 
 const searchAlgo = (e) => {
   let filterEntries = [];
-  const userValue = e.target.value.toLowerCase();
+  const userValue = e.target.value.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")
   if (userValue.length >= 3) {
     filterEntries = currentRecipes.filter(
       (el) =>
@@ -45,12 +45,16 @@ const rechecheBarre = () => {
 
 const createTag = (ingredient) => {
   const tagContainer = document.querySelector(".tag_container");
-  tagContainer.innerHTML += `
-            <div class="tag_ingredient">
-            <span class="tag_value_ingredient">${ingredient}</span>
-            <i class="fa-regular fa-circle-xmark icon"></i>
-            </div>
-            `;
+  const createDiv = document.createElement("div")
+  createDiv.setAttribute("class","tag_ingredient")
+  const createSpan = document.createElement("span")
+  createSpan.setAttribute("class", "tag_value_ingredient")
+  const icon = document.createElement("i")
+  icon.setAttribute("class","fa-regular fa-circle-xmark icon")
+  tagContainer.appendChild(createDiv)
+  createDiv.appendChild(createSpan)
+  createDiv.appendChild(icon)
+  createSpan.innerHTML += ingredient
   const tagActiveIngr = document.querySelectorAll(`.tag_ingredient`);
   tagActiveIngr.forEach((tagAct) => {
     tagAct.addEventListener("click", function () {
@@ -102,8 +106,6 @@ const createTag = (ingredient) => {
         );
         console.log(currentRecipes);
       });
-      /* Retrouver la liste des tags */
-      /* Filtrer currentRecipes par rapport a la liste des tags */
       displayReceipes();
       filterArray();
     });
@@ -112,13 +114,17 @@ const createTag = (ingredient) => {
 
 const createAppTag = (appliance) => {
   const tagContainer = document.querySelector(".tag_container");
-  tagContainer.innerHTML += `
-    <div class="tag_app">
-        <span class="tag_value_appareil">${appliance}</span>
-        <i class="fa-regular fa-circle-xmark icon"></i>
-    </div>
-    `;
-  const tagActiveApp = document.querySelectorAll(`.tag_app`);
+  const createDiv = document.createElement("div")
+  createDiv.setAttribute("class","tag_app")
+  const createSpan = document.createElement("span")
+  createSpan.setAttribute("class", "tag_value_appareil")
+  const icon = document.createElement("i")
+  icon.setAttribute("class","fa-regular fa-circle-xmark icon")
+  tagContainer.appendChild(createDiv)
+  createDiv.appendChild(createSpan)
+  createDiv.appendChild(icon)
+  createSpan.innerHTML += appliance
+  const tagActiveApp = document.querySelectorAll(`.tag_app`)
   tagActiveApp.forEach((test) => {
     test.addEventListener("click", function () {
       test.remove();
@@ -200,12 +206,16 @@ const createAppTag = (appliance) => {
 
 const createUstTag = (ustensils_item) => {
   const tagContainer = document.querySelector(".tag_container");
-  tagContainer.innerHTML += `
-    <div class="tag_ust">
-    <span class="tag_value_ustensils">${ustensils_item}</span>
-    <i class="fa-regular fa-circle-xmark icon"></i>
-    </div>
-    `;
+  const createDiv = document.createElement("div")
+  createDiv.setAttribute("class","tag_ust")
+  const createSpan = document.createElement("span")
+  createSpan.setAttribute("class", "tag_value_ustensils")
+  const icon = document.createElement("i")
+  icon.setAttribute("class","fa-regular fa-circle-xmark icon")
+  tagContainer.appendChild(createDiv)
+  createDiv.appendChild(createSpan)
+  createDiv.appendChild(icon)
+  createSpan.innerHTML += ustensils_item
   const tagActiveUst = document.querySelectorAll(`.tag_ust`);
   tagActiveUst.forEach((tagAct) => {
     tagAct.addEventListener("click", function () {
@@ -237,7 +247,6 @@ const createUstTag = (ustensils_item) => {
               .includes(tagArr.innerHTML.toLowerCase())
           )
         );
-        console.log(currentRecipes);
       });
       tagArrayUstensils.forEach((tagArr) => {
         console.log(tagArr.innerHTML.toLowerCase());
@@ -246,14 +255,12 @@ const createUstTag = (ustensils_item) => {
             ust.toLowerCase().includes(tagArr.innerHTML.toLowerCase())
           )
         );
-        console.log(currentRecipes);
       });
       tagArrayAppareil.forEach((tagArr) => {
         console.log(tagArr.innerHTML.toLowerCase());
         currentRecipes = currentRecipes.filter((elTag) =>
           elTag.appliance.toLowerCase().includes(tagArr.innerHTML.toLowerCase())
         );
-        console.log(currentRecipes);
       });
       displayReceipes();
       filterArray();
