@@ -59,8 +59,11 @@ const createTag = (ingredient) => {
   createDiv.setAttribute("class","tag_ingredient")
   const createSpan = document.createElement("span")
   createSpan.setAttribute("class", "tag_value_ingredient")
+  const icon = document.createElement("i")
+  icon.setAttribute("class","fa-regular fa-circle-xmark icon")
   tagContainer.appendChild(createDiv)
   createDiv.appendChild(createSpan)
+  createDiv.appendChild(icon)
   createSpan.innerHTML += ingredient
   const tagActiveIngr = document.querySelectorAll(`.tag_ingredient`);
   tagActiveIngr.forEach((tagAct) => {
@@ -118,8 +121,11 @@ const createAppTag = (appliance) => {
   createDiv.setAttribute("class","tag_app")
   const createSpan = document.createElement("span")
   createSpan.setAttribute("class", "tag_value_appareil")
+  const icon = document.createElement("i")
+  icon.setAttribute("class","fa-regular fa-circle-xmark icon")
   tagContainer.appendChild(createDiv)
   createDiv.appendChild(createSpan)
+  createDiv.appendChild(icon)
   createSpan.innerHTML += appliance
   const tagActiveApp = document.querySelectorAll(`.tag_app`);
   tagActiveApp.forEach((tagAct) => {
@@ -201,8 +207,11 @@ const createUstTag = (ustensils_item) => {
   createDiv.setAttribute("class","tag_ust")
   const createSpan = document.createElement("span")
   createSpan.setAttribute("class", "tag_value_ustensils")
+  const icon = document.createElement("i")
+  icon.setAttribute("class","fa-regular fa-circle-xmark icon")
   tagContainer.appendChild(createDiv)
   createDiv.appendChild(createSpan)
+  createDiv.appendChild(icon)
   createSpan.innerHTML += ustensils_item
   const tagActiveUst = document.querySelectorAll(`.tag_ust`);
   tagActiveUst.forEach((tagAct) => {
