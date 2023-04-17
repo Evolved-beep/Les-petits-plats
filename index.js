@@ -16,6 +16,7 @@ const searchAlgo = (e) => {
   let filterEntries = [];
   const userValue = e.target.value.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")
   if (userValue.length >= 3) {
+    currentRecipes = [...recipes]
     filterEntries = currentRecipes.filter(
       (el) =>
         el.name.toLowerCase().includes(userValue) ||
