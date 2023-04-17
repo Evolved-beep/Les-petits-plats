@@ -13,6 +13,7 @@ const displayReceipes = () => {
 };
 
 const searchAlgo = (e) => {
+  currentRecipes = recipes
   let filterEntries = [];
   const userValue = e.target.value.toLowerCase();
   if (userValue.length >= 3) {
@@ -29,12 +30,11 @@ const searchAlgo = (e) => {
         ingredientFind
       ) {
         filterEntries.push(obj);
-        const newArray = [...new Set(filterEntries)];
-        currentRecipes = [...newArray];
       }
+      currentRecipes = [...filterEntries]
+      displayReceipes();
+      filterArray();
     }
-    filterArray();
-    displayReceipes();
 
   } else if (userValue.length < 3) {
     currentRecipes = recipes;
