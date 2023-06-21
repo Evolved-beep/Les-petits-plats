@@ -151,6 +151,7 @@ nav img {
 
 .recipes_container {
     margin: 0 20px 50px 0 ;
+    position: relative;
 }
 
 .recipes_container input::placeholder{
@@ -160,13 +161,17 @@ nav img {
 
 .recipes_container i {
     position: absolute;
-    display: none;
     top: 40%;
     right: 10%;
-    color: black;
+    color: white;
     z-index: 2000;
     font-size: 18px;
     cursor: pointer;
+}
+
+.rotate {
+    transform: rotate(180deg);
+    color: black;
 }
 
 .ingr_list {
