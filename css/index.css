@@ -51,9 +51,10 @@ nav img {
 
 .input_search{
     display: flex;
+    position: relative;
 }
-.input_search input {
-    width: 100%;
+
+.input_search input {   
     height: 69px;
     border: none;
     color: white;
@@ -69,10 +70,9 @@ nav img {
     background-color: #3282F7;
 }
 
-.input_search input > .ingr_container,.ingr_list {
-    width: 100%;
+.active{
+    width: 600px;
 }
-
 .input_search .appareils {
     position: relative;
     background-color: #68D9A4;
@@ -170,30 +170,32 @@ nav img {
 }
 
 .ingr_list {
-    position: absolute;
     background: #3282F7;
     border-radius: 0 0 5px 5px;
     column-count: 3;
     list-style-type: none;
     color: #FFFFFF;
+    margin: 0 4px;
 }
 
 .ingr_container {
-    position: relative;
+    display: none;
+    position: absolute;
     background: #3282F7;
     border-radius: 0 0 5px 5px;
-    height: auto;
+    width: 600px;
 }
 
 .ingr_container li {
     cursor: pointer;
     font-size: 18px;
     font-family: 'Lato';
-    padding: 12px;
+    padding: 20px;
 }
 
 .app_container{
     position: absolute;
+    width: 231px;
     display: none;
     background: #68D9A4;
     border-radius: 0 0 5px 5px;
@@ -213,6 +215,7 @@ nav img {
 
 .ust_container {
     position: absolute;
+    width: 231px;
     display: none;
     background-color: #ED6454;
     border-radius: 0 0 5px 5px;
