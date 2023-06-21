@@ -365,10 +365,15 @@ function inputIngredient(ingredientList) {
 }
 ingredientSearch.addEventListener("click", function () {
   const ingredient_list = document.querySelector(".ingr_container");
+  const icon = document.querySelector(".ingred")
   if (ingredient_list.style.display === "block") {
-    return (ingredient_list.style.display = "none") && ingredientSearch.classList.remove("active");
+    ingredient_list.style.display = "none"
+    ingredientSearch.classList.remove("active")
+    icon.classList.remove("rotate")
   } else {
-    return (ingredient_list.style.display = "block") && ingredientSearch.classList.add("active");
+     ingredient_list.style.display = "block"
+     ingredientSearch.classList.add("active")
+     icon.classList.add("rotate")
   }
 });
 let inputApp = document.querySelector(".appareils");
@@ -405,11 +410,14 @@ function inputAppareils(applianceSort) {
   });
 }
 inputApp.addEventListener("click", function () {
+  const icon = document.querySelector(".appli")
   const appliance_list = document.querySelector(".app_container");
   if (appliance_list.style.display === "block") {
-    appliance_list.style.display = "none";
+    appliance_list.style.display = "none"
+    icon.classList.remove("rotate")
   } else {
-    appliance_list.style.display = "block";
+    appliance_list.style.display = "block"
+    icon.classList.add("rotate")
   }
 });
 let input = document.querySelector(".ustensiles");
@@ -447,11 +455,14 @@ function inputUstensil(ustensilSort) {
   });
 }
 input.addEventListener("click", function () {
+  const icon = document.querySelector(".uste")
   const ustensil_list = document.querySelector(".ust_container");
   if (ustensil_list.style.display === "block") {
-    ustensil_list.style.display = "none";
+    ustensil_list.style.display = "none"
+    icon.classList.remove("rotate")
   } else {
-    ustensil_list.style.display = "block";
+    ustensil_list.style.display = "block"
+    icon.classList.add("rotate")
   }
 });
 const filterArray = () => {
