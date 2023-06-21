@@ -89,7 +89,6 @@ const createTag = (ingredient) => {
               .includes(tagArr.innerHTML.toLowerCase())
           )
         );
-        console.log(currentRecipes);
       });
       tagArrayUstensils.forEach((tagArr) => {
         console.log(tagArr.innerHTML.toLowerCase());
@@ -98,14 +97,12 @@ const createTag = (ingredient) => {
             ust.toLowerCase().includes(tagArr.innerHTML.toLowerCase())
           )
         );
-        console.log(currentRecipes);
       });
       tagArrayAppareil.forEach((tagArr) => {
         console.log(tagArr.innerHTML.toLowerCase());
         currentRecipes = currentRecipes.filter((elTag) =>
           elTag.appliance.toLowerCase().includes(tagArr.innerHTML.toLowerCase())
         );
-        console.log(currentRecipes);
       });
       displayReceipes();
       filterArray();
@@ -161,10 +158,8 @@ const createAppTag = (appliance) => {
               .toLowerCase()
               .includes(tagArr.innerHTML.toLowerCase())
         );
-        console.log(currentRecipes);
       });
       tagArrayUstensils.forEach((tagArr) => {
-        console.log(tagArr.innerHTML.toLowerCase());
         currentRecipes = currentRecipes.filter(
           (elTag) =>
             elTag.ingredients.some((ingredient) =>
@@ -179,10 +174,8 @@ const createAppTag = (appliance) => {
               .toLowerCase()
               .includes(tagArr.innerHTML.toLowerCase())
         );
-        console.log(currentRecipes);
       });
       tagArrayAppareil.forEach((tagArr) => {
-        console.log(tagArr.innerHTML.toLowerCase());
         currentRecipes = currentRecipes.filter(
           (elTag) =>
             elTag.ingredients.some((ingredient) =>
@@ -197,7 +190,6 @@ const createAppTag = (appliance) => {
               .toLowerCase()
               .includes(tagArr.innerHTML.toLowerCase())
         );
-        console.log(currentRecipes);
       });
       displayReceipes();
       filterArray();
@@ -290,7 +282,6 @@ function inputIngredient(ingredientList) {
             .includes(ingredient.innerHTML.toLowerCase())
         )
       );
-      console.log(currentRecipes);
       displayReceipes();
       filterArray();
     });
@@ -332,7 +323,6 @@ function inputAppareils(applianceSort) {
       currentRecipes = currentRecipes.filter((el) =>
         el.appliance.toLowerCase().includes(appliance.innerHTML.toLowerCase())
       );
-      console.log(currentRecipes);
       displayReceipes();
       filterArray();
     });
@@ -369,14 +359,12 @@ function inputUstensil(ustensilSort) {
   const li = document.querySelectorAll(".ustensiles_item");
   li.forEach((ustensils_item) => {
     ustensils_item.addEventListener("click", function () {
-      console.log(ustensils_item.innerHTML.toLowerCase());
       createUstTag(ustensils_item.innerHTML);
       currentRecipes = currentRecipes.filter((ust) =>
         ust.ustensils.some((ust_tag) =>
           ust_tag.toLowerCase().includes(ustensils_item.innerHTML.toLowerCase())
         )
       );
-      console.log(currentRecipes);
       displayReceipes();
       filterArray();
     });
