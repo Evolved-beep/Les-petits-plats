@@ -32,12 +32,76 @@ const searchAlgo = (e) => {
         filterEntries.push(obj);
       }
       currentRecipes = [...filterEntries]
+
+      const tagArrayIngredient = document.querySelectorAll(".tag_value_ingredient");
+    const tagArrayUstensils = document.querySelectorAll(".tag_value_ustensils");
+    const tagArrayAppareil = document.querySelectorAll(".tag_value_appareil");
+
+    tagArrayIngredient.forEach((tagArr) => {
+      console.log(tagArr.innerHTML.toLowerCase());
+      currentRecipes = currentRecipes.filter((elTag) =>
+        elTag.ingredients.some((ingredient) =>
+          ingredient.ingredient
+            .toLowerCase()
+            .includes(tagArr.innerHTML.toLowerCase())
+        )
+      );
+    });
+
+    tagArrayUstensils.forEach((tagArr) => {
+      console.log(tagArr.innerHTML.toLowerCase());
+      currentRecipes = currentRecipes.filter((elTag) =>
+        elTag.ustensils.some((ust) =>
+          ust.toLowerCase().includes(tagArr.innerHTML.toLowerCase())
+        )
+      );
+    });
+
+    tagArrayAppareil.forEach((tagArr) => {
+      console.log(tagArr.innerHTML.toLowerCase());
+      currentRecipes = currentRecipes.filter((elTag) =>
+        elTag.appliance.toLowerCase().includes(tagArr.innerHTML.toLowerCase())
+      );
+    });
       displayReceipes();
       filterArray();
     }
 
   } else if (userValue.length < 3) {
     currentRecipes = recipes;
+    const tagArrayIngredient = document.querySelectorAll(".tag_value_ingredient");
+    const tagArrayUstensils = document.querySelectorAll(".tag_value_ustensils");
+    const tagArrayAppareil = document.querySelectorAll(".tag_value_appareil");
+
+    tagArrayIngredient.forEach((tagArr) => {
+      console.log(tagArr.innerHTML.toLowerCase());
+      currentRecipes = currentRecipes.filter((elTag) =>
+        elTag.ingredients.some((ingredient) =>
+          ingredient.ingredient
+            .toLowerCase()
+            .includes(tagArr.innerHTML.toLowerCase())
+        )
+      );
+    });
+
+    tagArrayUstensils.forEach((tagArr) => {
+      console.log(tagArr.innerHTML.toLowerCase());
+      currentRecipes = currentRecipes.filter((elTag) =>
+        elTag.ustensils.some((ust) =>
+          ust.toLowerCase().includes(tagArr.innerHTML.toLowerCase())
+        )
+      );
+    });
+
+    tagArrayAppareil.forEach((tagArr) => {
+      console.log(tagArr.innerHTML.toLowerCase());
+      currentRecipes = currentRecipes.filter((elTag) =>
+        elTag.appliance.toLowerCase().includes(tagArr.innerHTML.toLowerCase())
+      );
+    });
+    
+    filterArray();
+    displayReceipes();
     displayReceipes();
     filterArray();
   }
@@ -300,9 +364,9 @@ function inputIngredient(ingredientList) {
 ingredientSearch.addEventListener("click", function () {
   const ingredient_list = document.querySelector(".ingr_container");
   if (ingredient_list.style.display === "block") {
-    return (ingredient_list.style.display = "none");
+    return (ingredient_list.style.display = "none") && ingredientSearch.classList.remove("active")
   } else {
-    return (ingredient_list.style.display = "block");
+    return (ingredient_list.style.display = "block") && ingredientSearch.classList.add("active")
   }
 });
 let inputApp = document.querySelector(".appareils");

@@ -18,9 +18,10 @@ nav {
     flex-direction: column;
     margin: 50px 0 0 0;
 }
- nav img {
-    height: 100px;
- }
+
+nav img {
+    height : 100px;
+}
 
 .search {
     position: relative;
@@ -50,9 +51,10 @@ nav {
 
 .input_search{
     display: flex;
+    position: relative;
 }
-.input_search input {
-    width: 170px;
+
+.input_search input {   
     height: 69px;
     border: none;
     color: white;
@@ -60,7 +62,7 @@ nav {
     font-size: 18px;
     font-family: 'Lato';
     font-weight: 700;
-    border-radius: 5px;
+    border-radius: 5px 5px 0 0 ;
 }
 
 .input_search .ingredients {
@@ -68,6 +70,9 @@ nav {
     background-color: #3282F7;
 }
 
+.active{
+    width: 600px;
+}
 .input_search .appareils {
     position: relative;
     background-color: #68D9A4;
@@ -112,9 +117,8 @@ nav {
     font-weight: 700;
     font-family: 'Lato';
     color: #E7E7E7;
-    border-radius: 5px;
     text-align: center;
-    margin-right: 8px;
+    margin-right: 10px;
 }
 
 .tag_app .icon {
@@ -133,9 +137,8 @@ nav {
     font-weight: 700;
     font-family: 'Lato';
     color: #E7E7E7;
-    border-radius: 5px;
     text-align: center;
-    margin-right: 8px;
+    margin-right: 10px;
 }
 
 .tag_ust .icon {
@@ -164,31 +167,38 @@ nav {
     z-index: 2000;
     font-size: 18px;
     cursor: pointer;
+}
 
+.ingr_list {
+    background: #3282F7;
+    border-radius: 0 0 5px 5px;
+    column-count: 3;
+    list-style-type: none;
+    color: #FFFFFF;
+    margin: 0 4px;
 }
 
 .ingr_container {
     display: none;
+    position: absolute;
     background: #3282F7;
-    border-radius: 5px;
-}
-
-.ingr_container ul {
-    column-count: 3;
-    list-style-type: none;
-    color: #FFFFFF;
+    border-radius: 0 0 5px 5px;
+    width: 600px;
 }
 
 .ingr_container li {
     cursor: pointer;
     font-size: 18px;
     font-family: 'Lato';
+    padding: 20px;
 }
 
 .app_container{
+    position: absolute;
+    width: 231px;
     display: none;
     background: #68D9A4;
-    border-radius: 5px;
+    border-radius: 0 0 5px 5px;
 }
 
 .app_container ul {
@@ -200,11 +210,15 @@ nav {
     font-size: 18px;
     font-family: 'Lato';
     cursor: pointer;
+    padding: 12px;
 }
 
 .ust_container {
+    position: absolute;
+    width: 231px;
     display: none;
     background-color: #ED6454;
+    border-radius: 0 0 5px 5px;
 }
 
 .ust_container ul {
@@ -216,6 +230,7 @@ nav {
     font-size: 18px;
     font-family: 'Lato';
     cursor: pointer;
+    padding: 12px;
 }
 
 section {
@@ -293,4 +308,39 @@ article .recette{
 }
 
 
+@media screen and (min-width: 1920px) {
+    body {
+        max-width: 80%;
+        margin: 0 auto;
+    }
 
+    .search input {
+        width: 100%;
+    }
+    section {
+        width: 100%;
+    }
+    section article {
+        max-width: 475px;
+        margin-right: 32px;
+        width: 100%;
+        height: 400px;
+    }
+
+    .information p {
+        font-size: 20px;
+    }
+
+    .time {
+        height: 30px;
+    }
+
+    .recipes p {
+        font-size: 13px;
+    }
+
+    article .recette{
+        font-size: 13px;
+        height: 108px;
+    }
+}
