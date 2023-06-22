@@ -12,6 +12,40 @@ const displayReceipes = () => {
   });
 };
 
+const tagAlgoContainer = () => {
+
+  const tagArrayIngredient = document.querySelectorAll(".tag_value_ingredient");
+  const tagArrayUstensils = document.querySelectorAll(".tag_value_ustensils");
+  const tagArrayAppareil = document.querySelectorAll(".tag_value_appareil");
+
+    tagArrayIngredient.forEach((tagArr) => {
+      console.log(tagArr.innerHTML.toLowerCase());
+      currentRecipes = currentRecipes.filter((elTag) =>
+        elTag.ingredients.some((ingredient) =>
+          ingredient.ingredient
+            .toLowerCase()
+            .includes(tagArr.innerHTML.toLowerCase())
+        )
+      );
+    });
+
+    tagArrayUstensils.forEach((tagArr) => {
+      console.log(tagArr.innerHTML.toLowerCase());
+      currentRecipes = currentRecipes.filter((elTag) =>
+        elTag.ustensils.some((ust) =>
+          ust.toLowerCase().includes(tagArr.innerHTML.toLowerCase())
+        )
+      );
+    });
+
+    tagArrayAppareil.forEach((tagArr) => {
+      console.log(tagArr.innerHTML.toLowerCase());
+      currentRecipes = currentRecipes.filter((elTag) =>
+        elTag.appliance.toLowerCase().includes(tagArr.innerHTML.toLowerCase())
+      );
+    });
+}
+
 const searchAlgo = (e) => {
   currentRecipes = recipes
   let filterEntries = [];
@@ -33,75 +67,15 @@ const searchAlgo = (e) => {
       }
       currentRecipes = [...filterEntries]
 
-      const tagArrayIngredient = document.querySelectorAll(".tag_value_ingredient");
-    const tagArrayUstensils = document.querySelectorAll(".tag_value_ustensils");
-    const tagArrayAppareil = document.querySelectorAll(".tag_value_appareil");
-
-    tagArrayIngredient.forEach((tagArr) => {
-      console.log(tagArr.innerHTML.toLowerCase());
-      currentRecipes = currentRecipes.filter((elTag) =>
-        elTag.ingredients.some((ingredient) =>
-          ingredient.ingredient
-            .toLowerCase()
-            .includes(tagArr.innerHTML.toLowerCase())
-        )
-      );
-    });
-
-    tagArrayUstensils.forEach((tagArr) => {
-      console.log(tagArr.innerHTML.toLowerCase());
-      currentRecipes = currentRecipes.filter((elTag) =>
-        elTag.ustensils.some((ust) =>
-          ust.toLowerCase().includes(tagArr.innerHTML.toLowerCase())
-        )
-      );
-    });
-
-    tagArrayAppareil.forEach((tagArr) => {
-      console.log(tagArr.innerHTML.toLowerCase());
-      currentRecipes = currentRecipes.filter((elTag) =>
-        elTag.appliance.toLowerCase().includes(tagArr.innerHTML.toLowerCase())
-      );
-    });
+      tagAlgoContainer()
       displayReceipes();
       filterArray();
     }
 
   } else if (userValue.length < 3) {
     currentRecipes = recipes;
-    const tagArrayIngredient = document.querySelectorAll(".tag_value_ingredient");
-    const tagArrayUstensils = document.querySelectorAll(".tag_value_ustensils");
-    const tagArrayAppareil = document.querySelectorAll(".tag_value_appareil");
-
-    tagArrayIngredient.forEach((tagArr) => {
-      console.log(tagArr.innerHTML.toLowerCase());
-      currentRecipes = currentRecipes.filter((elTag) =>
-        elTag.ingredients.some((ingredient) =>
-          ingredient.ingredient
-            .toLowerCase()
-            .includes(tagArr.innerHTML.toLowerCase())
-        )
-      );
-    });
-
-    tagArrayUstensils.forEach((tagArr) => {
-      console.log(tagArr.innerHTML.toLowerCase());
-      currentRecipes = currentRecipes.filter((elTag) =>
-        elTag.ustensils.some((ust) =>
-          ust.toLowerCase().includes(tagArr.innerHTML.toLowerCase())
-        )
-      );
-    });
-
-    tagArrayAppareil.forEach((tagArr) => {
-      console.log(tagArr.innerHTML.toLowerCase());
-      currentRecipes = currentRecipes.filter((elTag) =>
-        elTag.appliance.toLowerCase().includes(tagArr.innerHTML.toLowerCase())
-      );
-    });
     
-    filterArray();
-    displayReceipes();
+    tagAlgoContainer()
     displayReceipes();
     filterArray();
   }
@@ -145,34 +119,7 @@ const createTag = (ingredient) => {
       );
       currentRecipes = [...filterEntries];
       
-      const tagArrayIngredient = document.querySelectorAll(
-        ".tag_value_ingredient"
-      );
-      const tagArrayUstensils = document.querySelectorAll(
-        ".tag_value_ustensils"
-      );
-      const tagArrayAppareil = document.querySelectorAll(".tag_value_appareil");
-      tagArrayIngredient.forEach((tagArr) => {
-        currentRecipes = currentRecipes.filter((elTag) =>
-          elTag.ingredients.some((ingredient) =>
-            ingredient.ingredient
-              .toLowerCase()
-              .includes(tagArr.innerHTML.toLowerCase())
-          )
-        );
-      });
-      tagArrayUstensils.forEach((tagArr) => {
-        currentRecipes = currentRecipes.filter((elTag) =>
-          elTag.ustensils.some((ust) =>
-            ust.toLowerCase().includes(tagArr.innerHTML.toLowerCase())
-          )
-        );
-      });
-      tagArrayAppareil.forEach((tagArr) => {
-        currentRecipes = currentRecipes.filter((elTag) =>
-          elTag.appliance.toLowerCase().includes(tagArr.innerHTML.toLowerCase())
-        );
-      });
+     tagAlgoContainer()
       displayReceipes();
       filterArray();
     });
@@ -204,61 +151,7 @@ const createAppTag = (appliance) => {
           el.appliance.toLowerCase().includes(userValue)
       );
       currentRecipes = [...filterEntries];
-      const tagArrayIngredient = document.querySelectorAll(
-        ".tag_value_ingredient"
-      );
-      const tagArrayUstensils = document.querySelectorAll(
-        ".tag_value_ustensils"
-      );
-      const tagArrayAppareil = document.querySelectorAll(".tag_value_appareil");
-      tagArrayIngredient.forEach((tagArr) => {
-        currentRecipes = currentRecipes.filter(
-          (elTag) =>
-            elTag.ingredients.some((ingredient) =>
-              ingredient.ingredient
-                .toLowerCase()
-                .includes(tagArr.innerHTML.toLowerCase())
-            ) ||
-            elTag.ustensils.some((ust) =>
-              ust.toLowerCase().includes(tagArr.innerHTML.toLowerCase())
-            ) ||
-            elTag.appliance
-              .toLowerCase()
-              .includes(tagArr.innerHTML.toLowerCase())
-        );
-      });
-      tagArrayUstensils.forEach((tagArr) => {
-        currentRecipes = currentRecipes.filter(
-          (elTag) =>
-            elTag.ingredients.some((ingredient) =>
-              ingredient.ingredient
-                .toLowerCase()
-                .includes(tagArr.innerHTML.toLowerCase())
-            ) ||
-            elTag.ustensils.some((ust) =>
-              ust.toLowerCase().includes(tagArr.innerHTML.toLowerCase())
-            ) ||
-            elTag.appliance
-              .toLowerCase()
-              .includes(tagArr.innerHTML.toLowerCase())
-        );
-      });
-      tagArrayAppareil.forEach((tagArr) => {
-        currentRecipes = currentRecipes.filter(
-          (elTag) =>
-            elTag.ingredients.some((ingredient) =>
-              ingredient.ingredient
-                .toLowerCase()
-                .includes(tagArr.innerHTML.toLowerCase())
-            ) ||
-            elTag.ustensils.some((ust) =>
-              ust.toLowerCase().includes(tagArr.innerHTML.toLowerCase())
-            ) ||
-            elTag.appliance
-              .toLowerCase()
-              .includes(tagArr.innerHTML.toLowerCase())
-        );
-      });
+      tagAlgoContainer()
       displayReceipes();
       filterArray();
     });
@@ -290,34 +183,7 @@ const createUstTag = (ustensils_item) => {
           element.ustensils.some((ustensil) => ustensil.includes(userValue))
       );
       currentRecipes = [...filterEntries];
-      const tagArrayIngredient = document.querySelectorAll(
-        ".tag_value_ingredient"
-      );
-      const tagArrayUstensils = document.querySelectorAll(
-        ".tag_value_ustensils"
-      );
-      const tagArrayAppareil = document.querySelectorAll(".tag_value_appareil");
-      tagArrayIngredient.forEach((tagArr) => {
-        currentRecipes = currentRecipes.filter((elTag) =>
-          elTag.ingredients.some((ingredient) =>
-            ingredient.ingredient
-              .toLowerCase()
-              .includes(tagArr.innerHTML.toLowerCase())
-          )
-        );
-      });
-      tagArrayUstensils.forEach((tagArr) => {
-        currentRecipes = currentRecipes.filter((elTag) =>
-          elTag.ustensils.some((ust) =>
-            ust.toLowerCase().includes(tagArr.innerHTML.toLowerCase())
-          )
-        );
-      });
-      tagArrayAppareil.forEach((tagArr) => {
-        currentRecipes = currentRecipes.filter((elTag) =>
-          elTag.appliance.toLowerCase().includes(tagArr.innerHTML.toLowerCase())
-        );
-      });
+      tagAlgoContainer()
       displayReceipes();
       filterArray();
     });
